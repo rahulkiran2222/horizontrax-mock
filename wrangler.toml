@@ -1,0 +1,5 @@
+name = "horizontrax-mock"
+compatibility_date = "2026-01-26"
+
+[site]
+bucket = ".open-next/assets"
