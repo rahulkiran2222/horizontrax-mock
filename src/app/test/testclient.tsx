@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
-import { examData } from "@/data/questions"; // This uses the shortcut we fixed in Step 1
+import { examData } from "../../../data/questions"; // This uses the shortcut we fixed in Step 1
 import { Clock, ChevronLeft, ChevronRight, CheckCircle2, LogOut, ShieldCheck } from "lucide-react";
 
 export default function TestClient({ params }: { params: Promise<{ id: string }> }) {
