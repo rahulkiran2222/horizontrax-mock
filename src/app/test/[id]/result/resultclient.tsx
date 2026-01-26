@@ -7,7 +7,7 @@ import jsPDF from "jspdf";
 
 export default function ResultClient({ id }: { id: string }) {
   const test = examData[id as keyof typeof examData];
-  const [stats, setStats] = useState({ correct: 0, score: 0 });
+  const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
 
   useEffect(() => {
@@ -15,34 +15,35 @@ export default function ResultClient({ id }: { id: string }) {
     setAnswers(data);
     let c = 0;
     if (test) {
-      test.questions.forEach((q, i) => {
-        if (data[i] === q.answer) c++;
-      });
-      setStats({ correct: c, score: c });
+      test.questions.forEach((q, i) => { if (data[i] === q.answer) c++; });
+      setScore(c);
     }
   }, [id, test]);
 
   const generatePDF = () => {
     const doc = new jsPDF();
-    doc.text("HORIZONTRAX REPORT", 14, 20);
-    test?.questions.forEach((q, i) => {
-      const y = 40 + (i * 10);
-      if (y < 280) doc.text(`Q${i+1}: ${q.answer === answers[i] ? 'Correct' : 'Wrong'}`, 14, y);
-    });
-    doc.save("Result.pdf");
+    doc.setTextColor(230, 230, 230);
+    doc.setFontSize(50);
+    doc.text("HORIZONTRAX", 40, 150, { angle: 45 });
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(20);
+    doc.text(`HorizonTrax Result: ${test?.title}`, 14, 20);
+    doc.text(`Score: ${score}/30`, 14, 30);
+    doc.save("HorizonTrax_Result.pdf");
   };
 
   return (
-    <div className="min-h-screen bg-[#F0FDF4] p-12 text-center text-slate-900">
-      <div className="bg-white p-16 rounded-[3rem] shadow-xl inline-block">
-        <h1 className="text-3xl font-black mb-6 uppercase tracking-tighter text-slate-800">Exam Complete</h1>
-        <div className="text-6xl font-black text-green-600 mb-10">{stats.score} / 30</div>
-        <div className="flex gap-4 justify-center">
-          <button onClick={generatePDF} className="bg-slate-900 text-white px-10 py-4 rounded-2xl font-bold flex items-center gap-2 hover:bg-black transition-all">
-            <Download size={18} /> Download PDF
+    <div className="min-h-screen bg-[#F0FDF4] flex items-center justify-center p-6 text-slate-900">
+      <div className="bg-white p-12 md:p-20 rounded-[3rem] shadow-2xl text-center max-w-2xl w-full">
+        <h1 className="text-3xl font-black mb-4">Exam Results</h1>
+        <p className="text-slate-500 mb-10 italic">Performance report for HorizonTrax Candidate</p>
+        <div className="text-8xl font-black text-green-600 mb-12">{score} <span className="text-2xl text-slate-300">/ 30</span></div>
+        <div className="flex flex-col md:flex-row gap-4 justify-center">
+          <button onClick={generatePDF} className="bg-slate-900 text-white px-10 py-5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-black transition-all">
+            <Download size={20} /> Download PDF
           </button>
-          <button onClick={() => window.location.href="/"} className="border-2 border-slate-200 px-10 py-4 rounded-2xl font-bold flex items-center gap-2 hover:bg-slate-50 transition-all text-slate-600">
-            <Home size={18} /> Home
+          <button onClick={() => window.location.href="/"} className="bg-white border-2 border-slate-200 text-slate-600 px-10 py-5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all">
+            <Home size={20} /> Back to Home
           </button>
         </div>
       </div>
