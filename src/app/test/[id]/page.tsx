@@ -1,4 +1,4 @@
-import TestClient from "./TestClient";
+import TestClient from "./testclient";
 
 export function generateStaticParams() {
   return [{ id: 'cpp-oops' }, { id: 'java-oops' }, { id: 'aptitude' }];
