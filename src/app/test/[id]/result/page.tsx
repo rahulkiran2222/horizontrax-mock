@@ -1,11 +1,12 @@
 import { examData } from "@/data/questions";
 import ResultClient from "./ResultClient";
 
-// This function MUST be in a file without "use client"
 export async function generateStaticParams() {
-  return Object.keys(examData).map((id) => ({
-    id: id,
-  }));
+  return [
+    { id: 'cpp-oops' },
+    { id: 'java-oops' },
+    { id: 'aptitude' }
+  ];
 }
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
