@@ -140,3 +140,15 @@ export default function TestEngine(props: { params: Params }) {
     </div>
   );
 }
+// ... keep all your existing imports at the top
+
+export async function generateStaticParams() {
+  return [
+    { id: 'cpp-oops' },
+    { id: 'java-oops' },
+    { id: 'aptitude' }
+  ];
+}
+
+export default function TestEngine(props: { params: Params }) {
+  // ... keep all your existing TestEngine code exactly as it is
