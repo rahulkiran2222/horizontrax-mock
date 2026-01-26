@@ -1,3 +1,4 @@
+export const runtime = "edge";
 import { examData } from "@/data/questions";
 import TestClient from "./TestClient";
 
