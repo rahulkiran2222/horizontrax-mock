@@ -4,11 +4,9 @@
   "private": true,
 
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "start": "next start"
-  },
+  "build": "next build",
+  "deploy": "opennext build && wrangler deploy"
+}
 
   "dependencies": {
     "next": "15.1.4",
