@@ -1,10 +1,9 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  output: 'export',      
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export', // This is what Cloudflare is looking for
   images: {
-    unoptimized: true,   
+    unoptimized: true, // Required for static export
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
