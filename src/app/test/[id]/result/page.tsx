@@ -131,3 +131,15 @@ const generatePDF = () => {
     </div>
   );
 }
+// ... keep all your existing imports at the top
+
+export async function generateStaticParams() {
+  return [
+    { id: 'cpp-oops' },
+    { id: 'java-oops' },
+    { id: 'aptitude' }
+  ];
+}
+
+export default function ResultPage(props: { params: Params }) {
+  // ... keep all your existing ResultPage code exactly as it is
