@@ -1,4 +1,4 @@
-import ResultClient from "./ResultClient";
+import ResultClient from "./resultclient";
 
 export function generateStaticParams() {
   return [
