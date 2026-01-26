@@ -38,7 +38,6 @@
   "dev": "next dev",
   "build": "next build",
   "pages:build": "npx @cloudflare/next-on-pages",
-  "deploy:noop": "echo Deploy handled by Cloudflare Pages"
+  "start": "next start"
 }
-
 }
