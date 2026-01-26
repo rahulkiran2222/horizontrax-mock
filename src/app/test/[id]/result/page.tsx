@@ -28,7 +28,7 @@ export default function ResultPage(props: { params: Params }) {
     }
   }, [id, test]);
 
-  const generatePDF = () => {
+const generatePDF = () => {
     const doc = new jsPDF();
     
     const addTemplate = (pdfDoc: any, pageNum: number) => {
@@ -55,8 +55,15 @@ export default function ResultPage(props: { params: Params }) {
 
     let y = 55;
     test.questions.forEach((q, i) => {
-      if (y > 240) { doc.addPage(); y = 30; }
-      addTemplate(doc, doc.internal.getNumberOfPages());
+      // Check if we need a new page
+      if (y > 240) { 
+        doc.addPage(); 
+        y = 30; 
+      }
+      
+      // Use getNumberOfPages() directly on doc, or cast to any to bypass strict check
+      const currentPage = (doc as any).internal.getNumberOfPages();
+      addTemplate(doc, currentPage);
       
       doc.setFontSize(11);
       doc.setTextColor(0, 0, 0);
@@ -72,10 +79,10 @@ export default function ResultPage(props: { params: Params }) {
       y += 22;
     });
 
+    // Final template call for page 1
     addTemplate(doc, 1);
     doc.save(`HorizonTrax_Report_${id}.pdf`);
   };
-
   return (
     <div className="min-h-screen bg-[#F0FDF4] py-12 px-4 text-slate-800">
       <div className="max-w-5xl mx-auto">
