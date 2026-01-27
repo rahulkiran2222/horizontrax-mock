@@ -1,4 +1,4 @@
-const config = {
+export default {
   default: {
     override: {
       wrapper: "cloudflare-node",
@@ -19,5 +19,3 @@ const config = {
     enableCacheInterception: false,
   },
 };
-
-export default config;
