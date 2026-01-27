@@ -1,5 +1,8 @@
 name = "horizontrax-mock"
-compatibility_date = "2026-01-26"
+compatibility_date = "2026-01-27"
 
-[site]
-bucket = ".open-next/assets"
+[assets]
+directory = ".open-next/assets"
+
+[build]
+command = "npm run build"
