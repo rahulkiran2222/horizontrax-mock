@@ -1,5 +1,9 @@
-import { defineConfig } from "@opennextjs/cloudflare";
+const config = {
+  default: {
+    override: {
+      wrapper: "cloudflare-node",
+    },
+  },
+};
 
-export default defineConfig({
-  output: "standalone",
-});
+export default config;
