@@ -3,10 +3,10 @@ export default {
     override: {
       wrapper: "cloudflare-node",
       converter: "edge",
+      queue: "direct",
       incrementalCache: "dummy",
       tagCache: "dummy",
-      queue: "direct"
-    }
+    },
   },
 
   middleware: {
@@ -14,11 +14,11 @@ export default {
     override: {
       wrapper: "cloudflare-edge",
       converter: "edge",
-      proxyExternalRequest: "fetch"
-    }
+      proxyExternalRequest: "fetch",
+    },
   },
 
   dangerous: {
-    enableCacheInterception: false
-  }
+    enableCacheInterception: false,
+  },
 };
