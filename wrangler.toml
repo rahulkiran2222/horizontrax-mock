@@ -1,4 +1,9 @@
 name = "horizontrax-mock"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# Add any environment variables here if needed
+name = "horizontrax-mock"
 compatibility_date = "2026-01-27"
 
 [assets]
