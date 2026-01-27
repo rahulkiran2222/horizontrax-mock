@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
   "dev": "next dev",
-  "build": "npx opennext build",
+  "build": "npx opennextjs build",
   "start": "next start"
 },
   "dependencies": {
