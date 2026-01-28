@@ -9,14 +9,14 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "HorizonTrax | Professional Mock Test Portal",
-  description: "Advanced proctored assessment platform",
+  title: "HorizonTrax | Professional Exam Portal",
+  description: "Industry-grade proctored platform",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="antialiased selection:bg-green-100">{children}</body>
+      <body className="antialiased bg-slate-50 text-slate-900">{children}</body>
     </html>
   );
 }
